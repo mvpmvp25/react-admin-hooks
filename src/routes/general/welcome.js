@@ -1,20 +1,40 @@
 import React, { useState } from 'react';
+import { dataCenter } from 'utils/tool';
 import CardList from 'components/order/cardList';
 import welcomeStyle from './welcome.scss';
 
 function Welcome() {
-  const [buttonText, setButtonText] = useState('Click me,   please');
+  const [state, setState] = useState(
+    dataCenter.fromJS({
+      page: 'xxxx',
+      age: 'qqqq',
+      taskList: ['aa', 'bb'],
+      list: []
+    })
+  );
 
-  function handleClick() {
-    return setButtonText('Thanks, been clicked!');
-  }
+  const handleClick = () => {
+    setState(
+      dataCenter.merge(state, {
+        page: 'xxxx',
+        age: 'qqqq',
+        taskList: ['aa', 'bb'],
+        list: [
+          { ss: 'xx', ww: 'rr' },
+          { ss: 'ee', ww: 'gg' }
+        ]
+      })
+    );
+  };
+
+  const { page, list, taskList } = dataCenter.toJS(state);
 
   return (
     <div className={`main-box ${welcomeStyle.pageBox}`}>
-      <CardList />
+      <CardList publics={{ page, list }} privates={{ taskList }} />
       <img src={require('assets/img/tab-my-pre.svg')} />
       <button className={welcomeStyle.hi} onClick={handleClick}>
-        {buttonText}
+        按钮
       </button>
     </div>
   );

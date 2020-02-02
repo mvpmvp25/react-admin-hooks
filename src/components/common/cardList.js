@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { dataCenter } from 'utils/tool';
 import { cardOrderList } from 'server/order';
 import { Table, Divider } from 'antd';
 
@@ -9,13 +8,20 @@ function CardList(props) {
     publics: { page, list },
     privates: { taskList }
   } = props;
-  const [state, setState] = useState(
-    dataCenter.fromJS({
-      page,
-      list,
-      taskList
-    })
-  );
+  const [state, setState] = useState({
+    page,
+    list,
+    taskList
+  });
+
+  useEffect(() => {
+    cardOrderList({
+      data: { page: state.page },
+      success: res => {
+        setState({ list: res.data.list });
+      }
+    });
+  }, [state.page]);
 
   const columns = [
     {
@@ -43,24 +49,12 @@ function CardList(props) {
       }
     }
   ];
-
-  const { page: cardPage, list: cardList } = dataCenter.toJS(state);
-
-  useEffect(() => {
-    cardOrderList({
-      data: { page: cardPage },
-      success: res => {
-        //setState({ list: res.data.list });
-        setState(dataCenter.merge(state, { list: res.data.list }));
-      }
-    });
-  }, [cardPage]);
-
+  console.info('CardList', state);
   return (
     <div>
       <Table
         columns={columns}
-        dataSource={cardList}
+        dataSource={state.list}
         rowKey={record => record.orderId}
       />
     </div>

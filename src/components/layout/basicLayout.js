@@ -1,9 +1,9 @@
 import React, { useContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { Layout, Menu, Breadcrumb, Icon, Row, Col } from 'antd';
-import Immutable from 'immutable';
 import appConfig from 'config/setting';
 import { getBreadcrumb, pageView } from 'config/__system';
+import { dataCenter } from 'utils/tool';
 import appHistory from '../../history';
 import basicLayoutStyle from './basicLayout.scss';
 
@@ -14,7 +14,7 @@ const {
 const myReducer = (state, action) => {
   switch (action.type) {
     case 'save':
-      return state.merge(action.payload);
+      return dataCenter.merge(state, action.payload);
     default:
       return state;
   }
@@ -24,7 +24,7 @@ const AppContext = React.createContext({});
 
 const MainLayout = props => {
   const { dispatch } = props;
-  const { selected, openKeys } = useContext(AppContext).toJS();
+  const { selected, openKeys } = dataCenter.toJS(useContext(AppContext));
   const { SubMenu } = Menu;
   const { Header, Content, Sider } = Layout;
 
@@ -133,7 +133,7 @@ function BasicLayout(props) {
   const selected = pathname == '/' ? appConfig.indexPath : pathname;
   const [state, dispatch] = useReducer(
     myReducer,
-    Immutable.fromJS({
+    dataCenter.fromJS({
       selected,
       openKeys: [selected.split('/')[1]]
     })

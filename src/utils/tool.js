@@ -1,3 +1,5 @@
+import Immutable from 'immutable';
+
 // 判断值是否为空 有值返回ture，否则返回false
 export const checkEmpty = data => {
   if (data instanceof Array) {
@@ -135,5 +137,18 @@ export const localStore = {
   clearLogin() {
     this.del({ key: ['tokenInfo'] });
     this.clearUser();
+  }
+};
+
+// Data Center
+export const dataCenter = {
+  fromJS(state) {
+    return Immutable.fromJS(state);
+  },
+  toJS(state) {
+    return state.toJS();
+  },
+  merge(oldState, modify) {
+    return oldState.merge(modify);
   }
 };
