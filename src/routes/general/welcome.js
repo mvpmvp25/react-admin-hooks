@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { dataCenter } from 'utils/tool';
-import CardList from 'components/order/cardList';
+import { CardList, CardSearch } from 'components/order/index';
 import welcomeStyle from './welcome.scss';
 
 function Welcome() {
@@ -31,6 +31,7 @@ function Welcome() {
 
   return (
     <div className={`main-box ${welcomeStyle.pageBox}`}>
+      <CardSearch publics={{ page, list }} privates={{ taskList }} />
       <CardList publics={{ page, list }} privates={{ taskList }} />
       <img src={require('assets/img/tab-my-pre.svg')} />
       <button className={welcomeStyle.hi} onClick={handleClick}>
