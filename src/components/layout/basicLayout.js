@@ -84,11 +84,7 @@ const MainLayout = props => {
                   }
                 >
                   {item.menu.map(v => {
-                    return (
-                      <Menu.Item key={`/${item.navKey}/${v.key}`}>
-                        {v.name}
-                      </Menu.Item>
-                    );
+                    return <Menu.Item key={`/${item.navKey}/${v.key}`}>{v.name}</Menu.Item>;
                   })}
                 </SubMenu>
               );
@@ -99,15 +95,11 @@ const MainLayout = props => {
           <Breadcrumb style={{ margin: '16px 0' }}>
             {getBreadcrumb(selected).map((item, index) => {
               item;
-              return (
-                <Breadcrumb.Item key={index}>{item.navText}</Breadcrumb.Item>
-              );
+              return <Breadcrumb.Item key={index}>{item.navText}</Breadcrumb.Item>;
             })}
           </Breadcrumb>
 
-          <Content style={{ padding: 24, margin: 0, minHeight: 280 }}>
-            {props.children}
-          </Content>
+          <Content style={{ padding: 24, margin: 0, minHeight: 280 }}>{props.children}</Content>
         </Layout>
       </Layout>
     </Layout>

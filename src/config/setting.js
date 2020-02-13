@@ -23,8 +23,7 @@ export default {
   ],
   zone: {
     local: {
-      serverUrl:
-        'https://www.fastmock.site/mock/560cc860d5341f83ccec8daabb60cfcc/frontend/'
+      serverUrl: 'https://www.fastmock.site/mock/560cc860d5341f83ccec8daabb60cfcc/frontend/'
     },
     dev: {
       serverUrl: ''

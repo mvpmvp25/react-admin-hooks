@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { dataCenter } from 'utils/tool';
 import { CardList, CardSearch } from 'components/order/index';
+import { themeChange } from 'config/__system';
+
 import welcomeStyle from './welcome.scss';
 
 function Welcome() {
@@ -14,6 +16,7 @@ function Welcome() {
   );
 
   const handleClick = () => {
+    themeChange('dark');
     setState(
       dataCenter.merge(state, {
         page: 'xxxx',
@@ -35,7 +38,7 @@ function Welcome() {
       <CardList publics={{ page, list }} privates={{ taskList }} />
       <img src={require('assets/img/tab-my-pre.svg')} />
       <button className={welcomeStyle.hi} onClick={handleClick}>
-        按钮
+        换肤
       </button>
     </div>
   );

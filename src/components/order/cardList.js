@@ -58,11 +58,7 @@ function CardList(props) {
 
   return (
     <div>
-      <Table
-        columns={columns}
-        dataSource={cardList}
-        rowKey={record => record.orderId}
-      />
+      <Table columns={columns} dataSource={cardList} rowKey={record => record.orderId} />
     </div>
   );
 }

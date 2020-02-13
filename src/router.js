@@ -13,14 +13,7 @@ function RouterConfig() {
       <BasicLayout>
         <Switch>
           {routeList.map((item, index) => {
-            return (
-              <Route
-                key={index}
-                path={item.path}
-                exact
-                component={item.component}
-              />
-            );
+            return <Route key={index} path={item.path} exact component={item.component} />;
           })}
         </Switch>
       </BasicLayout>

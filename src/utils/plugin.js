@@ -167,15 +167,9 @@ export const modalView = {
       content: (
         <div className="bbt-content">
           <div className="bbt-icon">{icon}</div>
-          <div className={checkEmpty(options.title) ? 'bbt-title' : 'none'}>
-            {options.title}
-          </div>
-          <div className={checkEmpty(options.content) ? 'bbt-text' : 'none'}>
-            {options.content}
-          </div>
-          <div className={checkEmpty(options.tips) ? 'bbt-tips' : 'none'}>
-            {options.tips}
-          </div>
+          <div className={checkEmpty(options.title) ? 'bbt-title' : 'none'}>{options.title}</div>
+          <div className={checkEmpty(options.content) ? 'bbt-text' : 'none'}>{options.content}</div>
+          <div className={checkEmpty(options.tips) ? 'bbt-tips' : 'none'}>{options.tips}</div>
         </div>
       ),
       onOk: close => {

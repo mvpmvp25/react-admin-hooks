@@ -259,9 +259,7 @@ export const request = (param, options) => {
         // 请求异常
         reqOption.error && reqOption.error(data);
         if (reqOption.toast) {
-          report.info(
-            options.name + ' error: ' + data.httpCode + '-' + data.httpText
-          );
+          report.info(options.name + ' error: ' + data.httpCode + '-' + data.httpText);
         }
         reqDone(
           false,

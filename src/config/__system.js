@@ -65,6 +65,18 @@ export const getBreadcrumb = key => {
   return allMenuInfo[key];
 };
 
+// 页面跳转
+export const themeChange = type => {
+  switch (type) {
+    case 'dark':
+      document.getElementsByTagName('body')[0].style.setProperty('--main-color', '#f00');
+      break;
+    default:
+      document.getElementsByTagName('body')[0].style.setProperty('--main-color', '#3318cf');
+  }
+};
+
+// 页面跳转
 export const pageView = {
   // rollTop() {
   //   window.scrollTo(0, 0);
