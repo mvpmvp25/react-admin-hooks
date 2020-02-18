@@ -6,8 +6,8 @@
   "scripts": {
     "start": "cross-env SERVER_TYPE=local webpack-dev-server --open",
     "build:dev": "cross-env SERVER_TYPE=dev webpack -p",
-    "lint": "eslint ./src/**/*.js && prettier --check ./src/**/*.{js,scss}",
-    "format": "prettier --write ./src/**/*.{js,scss}",
+    "lint": "eslint ./src/**/*.js && prettier --check ./src/**/*.{js,scss,html,json}",
+    "format": "prettier --write ./src/**/*.{js,scss,html,json}",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
