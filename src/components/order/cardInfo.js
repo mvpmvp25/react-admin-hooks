@@ -1,37 +1,32 @@
 import React from 'react';
+//import PropTypes from 'prop-types';
 import { Modal, Button } from 'antd';
-// import '../../style/welcome.scss';
 
-class UserList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { visible: false };
-    this.handleOk = this.handleOk.bind(this);
-    this.handleCancel = this.handleCancel.bind(this);
-  }
+class CardInfo extends React.Component {
+  state = { visible: false };
 
-  showModal() {
+  showModal = () => {
     this.setState({
       visible: true
     });
-  }
+  };
 
-  handleOk() {
+  handleOk = () => {
     this.setState({
       visible: false
     });
-  }
+  };
 
-  handleCancel() {
+  handleCancel = () => {
     this.setState({
       visible: false
     });
-  }
+  };
 
   render() {
     return (
       <div>
-        <Button type="primary" onClick={this.showModal.bind(this)}>
+        <Button type="primary" onClick={this.showModal}>
           Open Modal
         </Button>
         <Modal
@@ -49,8 +44,6 @@ class UserList extends React.Component {
   }
 }
 
-// UserList.propTypes = {
+CardInfo.propTypes = {};
 
-// };
-
-export default UserList;
+export default CardInfo;

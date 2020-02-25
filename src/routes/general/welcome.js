@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { dataCenter } from 'utils/tool';
-import { CardList, CardSearch } from 'components/order/index';
+import { CardList, CardSearch, CardInfo } from 'components/order/index';
 import { themeChange } from 'config/__system';
 
 import welcomeStyle from './welcome.scss';
@@ -36,6 +36,7 @@ function Welcome() {
     <div className={`main-box ${welcomeStyle.pageBox}`}>
       <CardSearch publics={{ page, list }} privates={{ taskList }} />
       <CardList publics={{ page, list }} privates={{ taskList }} />
+      <CardInfo />
       <img src={require('assets/img/tab-my-pre.svg')} />
       <button className={welcomeStyle.hi} onClick={handleClick}>
         换肤
