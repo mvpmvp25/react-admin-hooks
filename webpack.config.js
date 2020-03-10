@@ -27,7 +27,7 @@ module.exports = {
       routes: path.resolve(__dirname, './src/routes')
     }
   },
-  //devtool: 'source-map',
+  devtool: 'source-map',
   devServer: {
     disableHostCheck: true,
     historyApiFallback: true,

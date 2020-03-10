@@ -1,11 +1,16 @@
 import React, { useContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
-import { Layout, Menu, Breadcrumb, Icon, Row, Col } from 'antd';
+import { Layout, Menu, Breadcrumb, Row, Col } from 'antd';
+import { HomeOutlined } from '@ant-design/icons';
 import appConfig from 'config/setting';
 import { getBreadcrumb, pageView } from 'config/__system';
 import { dataCenter } from 'utils/tool';
 import appHistory from '../../history';
 import basicLayoutStyle from './basicLayout.scss';
+
+const iconInfo = {
+  notification: HomeOutlined
+};
 
 const {
   location: { pathname }
@@ -73,12 +78,13 @@ const MainLayout = props => {
             onClick={selectMenu}
           >
             {appConfig.leftMenuList.map(item => {
+              const Icon = iconInfo[item.icon];
               return (
                 <SubMenu
                   key={item.navKey}
                   title={
                     <span>
-                      <Icon type={item.icon} />
+                      <Icon />
                       {item.navName}
                     </span>
                   }
