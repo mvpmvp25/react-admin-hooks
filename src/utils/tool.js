@@ -150,5 +150,18 @@ export const dataCenter = {
   },
   merge(oldState, modify) {
     return oldState.merge(modify);
+  },
+  save(oldState, modify, puppet = false) {
+    let newState = Object.assign({}, oldState, modify);
+    if (puppet) {
+      // true-如果新state和旧state数据一样，则原样返回旧state，减少无必要的更新
+      if (Immutable.is(Immutable.fromJS(oldState), Immutable.fromJS(newState))) {
+        return oldState;
+      } else {
+        return newState;
+      }
+    } else {
+      return newState;
+    }
   }
 };

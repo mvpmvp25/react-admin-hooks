@@ -1,21 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react'; //, { useState }
 import PropTypes from 'prop-types';
-import { dataCenter } from 'utils/tool';
-import { cardOrderList } from 'server/order';
 import { Table, Divider } from 'antd';
 
 function CardList(props) {
   const {
-    publics: { page, list },
-    privates: { taskList }
+    static: { list }
+    // publics: { page },
+    // privates: { taskList }
   } = props;
-  const [state, setState] = useState(
-    dataCenter.fromJS({
-      page,
-      list,
-      taskList
-    })
-  );
+  // const [state] = useState({
+  //   page,
+  //   taskList
+  // });
 
   const columns = [
     {
@@ -44,28 +40,17 @@ function CardList(props) {
     }
   ];
 
-  const { page: cardPage, list: cardList } = dataCenter.toJS(state);
-
-  useEffect(() => {
-    cardOrderList({
-      data: { page: cardPage },
-      success: res => {
-        //setState({ list: res.data.list });
-        setState(dataCenter.merge(state, { list: res.data.list }));
-      }
-    });
-  }, [cardPage]);
-
   return (
     <div>
-      <Table columns={columns} dataSource={cardList} rowKey={record => record.orderId} />
+      <Table columns={columns} dataSource={list} rowKey={record => record.orderId} />
     </div>
   );
 }
 
 CardList.propTypes = {
-  publics: PropTypes.object, // array bool func number object string
-  privates: PropTypes.object.isRequired
+  static: PropTypes.object
+  // publics: PropTypes.object, // array bool func number object string
+  // privates: PropTypes.object.isRequired
 };
 
 export default CardList;

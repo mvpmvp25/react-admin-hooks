@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Form, Row, Col, Input, Button, DatePicker } from 'antd';
 import { UpOutlined, DownOutlined } from '@ant-design/icons';
-import { dataCenter, checkEmpty } from 'utils/tool';
+import { checkEmpty, dataCenter } from 'utils/tool';
 
 const dateFormat = 'YYYY-MM-DD';
 
-function cardSearch() {
-  // props
+function cardSearch(props) {
   const [form] = Form.useForm();
   // const fields = [
   //   {
@@ -28,12 +27,10 @@ function cardSearch() {
   //     value: ''
   //   }
   // ];
-  const [state, setState] = useState(
-    dataCenter.fromJS({
-      expand: false
-    })
-  );
-  const { expand } = dataCenter.toJS(state);
+  const [state, setState] = useState({
+    expand: false
+  });
+  const { expand } = state;
 
   const fieldShowCount = expand ? 6 : 3;
   let searchFields = [];
@@ -65,7 +62,6 @@ function cardSearch() {
         value: timeState.endTime
       }
     ]);
-    // setState(dataCenter.merge(state, timeState));
   };
 
   const endTimeChange = e => {
@@ -95,7 +91,6 @@ function cardSearch() {
         value: timeState.endTime
       }
     ]);
-    // setState(dataCenter.merge(state, timeState));
   };
 
   // 订单id
@@ -179,7 +174,7 @@ function cardSearch() {
   );
 
   const handleSearch = values => {
-    console.info(values);
+    props.sendData(values);
   };
 
   const handleFailed = err => {
@@ -196,7 +191,7 @@ function cardSearch() {
   };
 
   const toggle = () => {
-    setState(dataCenter.merge(state, { expand: !expand }));
+    setState(dataCenter.save(state, { expand: !expand }));
   };
 
   return (
@@ -238,8 +233,8 @@ function cardSearch() {
   );
 }
 
-// cardSearch.propTypes = {
-
-// };
+cardSearch.propTypes = {
+  sendData: PropTypes.func.isRequired
+};
 
 export default cardSearch; // name为表单域内字段 id 的前缀
