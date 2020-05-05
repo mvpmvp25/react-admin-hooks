@@ -48,7 +48,9 @@ function CardList(props) {
 }
 
 CardList.propTypes = {
-  static: PropTypes.object
+  static: PropTypes.exact({
+    list: PropTypes.array
+  })
   // publics: PropTypes.object, // array bool func number object string
   // privates: PropTypes.object.isRequired
 };
