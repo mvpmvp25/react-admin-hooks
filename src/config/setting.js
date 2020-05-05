@@ -4,7 +4,7 @@ export default {
   hostUrl: location.origin, // http://localhost:8063
   indexPath: '/general/welcome',
   // nothingPath: "/error/nothing", // 访问拒绝提示页面
-  routeExclude: ['/order/list'], // 忽略的路由(不需要生成路由的路径)
+  routeExclude: ['/order/list'], // 忽略的路由(不需要生成路由的路径) 访问忽略的路由显示indexPath
   routeTimeout: 10000, // 页面加载超时时间 10 seconds
   leftMenuList: [
     // 左侧主菜单

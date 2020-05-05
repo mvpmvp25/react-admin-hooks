@@ -62,6 +62,9 @@ export const getBreadcrumb = key => {
       ];
     });
   });
+  if (allMenuInfo[key] === undefined) {
+    console.info(`请先在appConfig.leftMenuList中增加${key}对应的配置`);
+  }
   return allMenuInfo[key];
 };
 
