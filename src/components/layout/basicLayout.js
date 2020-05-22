@@ -100,7 +100,6 @@ const MainLayout = props => {
         <Layout style={{ padding: '0 24px 24px' }}>
           <Breadcrumb style={{ margin: '16px 0' }}>
             {getBreadcrumb(selected).map((item, index) => {
-              item;
               return <Breadcrumb.Item key={index}>{item.navText}</Breadcrumb.Item>;
             })}
           </Breadcrumb>
