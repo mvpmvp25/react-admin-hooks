@@ -121,7 +121,7 @@ module.exports = {
         test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
         use: [
           {
-            loader: 'url-loader',
+            loader: 'url-loader', // 同时需要安装file-loader
             options: {
               esModule: false,
               limit: 5000,
