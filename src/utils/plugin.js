@@ -191,3 +191,39 @@ export const report = {
     message.info(text, time, cb);
   }
 };
+
+// 1
+// function decorateArmour(target, key, descriptor) {
+//   const method = descriptor.value;
+//   let moreDef = 100;
+//   let ret;
+//   descriptor.value = (...args) => {
+//     args[0] += moreDef;
+//     ret = method.apply(target, args);
+//     return ret;
+//   };
+//   return descriptor;
+// }
+
+export class Man extends React.PureComponent {
+  // constructor(props, args) {
+  //   super(props)
+
+  //   const { requestBody = {} } = props
+  //   const { defaultRequestBody = {} } = args
+  constructor(props, iq = 2, atk = 3, hp = 3) {
+    super(props, iq, atk, hp);
+    this.init(iq, atk, hp);
+    // console.log(this.constructor);
+  }
+
+  // @decorateArmour
+  init(iq, atk, hp) {
+    this.iq = iq; // 防御值
+    this.atk = atk; // 攻击力
+    this.hp = hp; // 血量
+  }
+  toString() {
+    return `防御力:$,攻击力:$,血量:$`;
+  }
+}

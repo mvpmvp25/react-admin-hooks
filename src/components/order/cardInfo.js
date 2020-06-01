@@ -2,6 +2,7 @@ import React from 'react';
 //import PropTypes from 'prop-types';
 import { Modal, Button } from 'antd';
 
+// @babel/plugin-proposal-class-properties
 class CardInfo extends React.Component {
   state = { visible: false };
 

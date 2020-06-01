@@ -18,7 +18,10 @@ export default {
       navKey: 'user',
       navName: 'textyyy',
       icon: 'notification',
-      menu: [{ key: 'list', name: 'text222' }]
+      menu: [
+        { key: 'list', name: 'text222' },
+        { key: 'info', name: 'text333' }
+      ]
     }
   ],
   zone: {
