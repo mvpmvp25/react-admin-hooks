@@ -1,6 +1,8 @@
+// 测试代码
 import React from 'react';
 import { Man } from 'utils/plugin';
-
+// const arrayMove = require('array-move');
+import arrayMove from 'array-move';
 // 1
 // @testable
 // class MyTestableClass {
@@ -69,6 +71,12 @@ import { Man } from 'utils/plugin';
 
 // 5
 class SuperMan extends Man {
+  componentDidMount() {
+    const input = ['a', 'b', 'c'];
+
+    const array1 = arrayMove(input, 1, 2);
+    console.info(array1);
+  }
   render() {
     // console.log(this);
     return <div>装饰器demo111</div>;

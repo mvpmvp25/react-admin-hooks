@@ -55,8 +55,10 @@
     "webpack-dev-server": "^3.10.1"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.10.1",
     "@sentry/browser": "^5.11.1",
     "antd": "^4.0.1",
+    "array-move": "^2.2.2",
     "bowser": "^2.9.0",
     "immutable": "^4.0.0-rc.12",
     "isomorphic-fetch": "^2.2.1",
